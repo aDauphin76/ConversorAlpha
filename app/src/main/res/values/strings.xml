@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ConversorEdadHumanaAlpha</string>
+    <string name="a_celciusText">a_Celcius</string>
+    <string name="edadHint">Ingrese Edad</string>
+    <string name="pesoHint">Ingrese Peso</string>
+    <string name="calculeEdadButtonText">Calcular Edad</string>
+    <string name="numeroMagico">5</string>
+
+</resources>
