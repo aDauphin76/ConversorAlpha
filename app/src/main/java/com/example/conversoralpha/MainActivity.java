@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 
@@ -34,23 +35,33 @@ public class MainActivity extends AppCompatActivity {
     public void seClickeoCalculoEdad(View view) {
         // traer valor de edad
         String edadStr  = edadEditText.getText().toString();
-        // parsear string a Entero
-        Float edadFloat     = Float.parseFloat(edadStr);
 
         // traer valor de edad
         String pesoStr  = pesoEditText.getText().toString();
-        // parsear string a Entero
-        Float pesoFloat     = Float.parseFloat(pesoStr);
 
-        // genero numero mágico
-        Double numeroMagico = Double.parseDouble(getString(R.string.numeroMagico));
-        numeroMagico = Math.log10(pesoFloat)*numeroMagico;
+        // valida que no este vacio
 
-        // genero resultado
-        Float resultado = edadFloat * Float.parseFloat(numeroMagico.toString());
+        if (!edadStr.isEmpty()  && !pesoStr.isEmpty()) {
 
-        // Muestro edad Humana de perro
-        edadHumanaTextView.setText(currency.format(resultado).toString());
+            // parsear string a Entero
+            float edadFloat     = Float.parseFloat(edadStr);
+
+            // parsear string a Entero
+            float pesoFloat     = Float.parseFloat(pesoStr);
+
+
+            // genero numero mágico
+            double numeroMagico = Double.parseDouble(getString(R.string.numeroMagico));
+            numeroMagico = Math.log10(pesoFloat)*numeroMagico;
+            // genero resultado
+            float resultado = edadFloat * Float.parseFloat(Double.toString(numeroMagico));
+
+            // Muestro edad Humana de perro
+            edadHumanaTextView.setText(currency.format(resultado));
+
+        }else {
+            Toast.makeText(getApplicationContext(),getString(R.string.mensajeError),Toast.LENGTH_LONG).show();
+        }
 
     }
 }
